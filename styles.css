@@ -1,0 +1,116 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #e0e0e0;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 50px 20px 30px;
+  background: #e0e0e0;
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
+  border-radius: 0 0 20px 20px;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Main content wrapper */
+.main-content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Search Section */
+.search-section {
+  background: #e0e0e0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 8px 8px 16px #bebebe,
+              -8px -8px 16px #ffffff;
+  margin-bottom: 50px;
+}
+
+.search-section input {
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
+  outline: none;
+}
+
+/* Featured Error Cards */
+.featured-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.error-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.error-card {
+  background: #e0e0e0;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 16px #bebebe,
+              -8px -8px 16px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.error-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 12px #bebebe,
+              -4px -4px 12px #ffffff;
+}
+
+.error-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.error-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9rem;
+  color: #888;
+  background: #e0e0e0;
+  margin-top: 50px;
+}
