@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #e0e0e0;
-  color: #333;
+  background: #dbe4ea; /* Soft blue-gray */
+  color: #2c3e50;
   line-height: 1.6;
 }
 
@@ -21,20 +21,21 @@ a {
 .header {
   text-align: center;
   padding: 50px 20px 30px;
-  background: #e0e0e0;
-  box-shadow: inset 4px 4px 8px #bebebe,
-              inset -4px -4px 8px #ffffff;
+  background: #dbe4ea;
+  box-shadow: inset 4px 4px 8px #b8c2ca,
+              inset -4px -4px 8px #f8ffff;
   border-radius: 0 0 20px 20px;
 }
 
 .header h1 {
   font-size: 2.8rem;
   margin-bottom: 10px;
+  color: #2980b9;
 }
 
 .header p {
   font-size: 1.2rem;
-  color: #666;
+  color: #566573;
 }
 
 /* Main content wrapper */
@@ -46,11 +47,11 @@ a {
 
 /* Search Section */
 .search-section {
-  background: #e0e0e0;
+  background: #dbe4ea;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 8px 8px 16px #bebebe,
-              -8px -8px 16px #ffffff;
+  box-shadow: 8px 8px 16px #b8c2ca,
+              -8px -8px 16px #f8ffff;
   margin-bottom: 50px;
 }
 
@@ -60,10 +61,11 @@ a {
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background: #e0e0e0;
-  box-shadow: inset 4px 4px 8px #bebebe,
-              inset -4px -4px 8px #ffffff;
+  background: #dbe4ea;
+  box-shadow: inset 4px 4px 8px #b8c2ca,
+              inset -4px -4px 8px #f8ffff;
   outline: none;
+  color: #2c3e50;
 }
 
 /* Featured Error Cards */
@@ -71,6 +73,7 @@ a {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 30px;
+  color: #2c3e50;
 }
 
 .error-grid {
@@ -80,29 +83,29 @@ a {
 }
 
 .error-card {
-  background: #e0e0e0;
+  background: #dbe4ea;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 8px 8px 16px #bebebe,
-              -8px -8px 16px #ffffff;
+  box-shadow: 8px 8px 16px #b8c2ca,
+              -8px -8px 16px #f8ffff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .error-card:hover {
   transform: translateY(-5px);
-  box-shadow: 4px 4px 12px #bebebe,
+  box-shadow: 4px 4px 12px #b0bcc4,
               -4px -4px 12px #ffffff;
 }
 
 .error-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: #333;
+  color: #2980b9;
 }
 
 .error-card p {
   font-size: 0.95rem;
-  color: #555;
+  color: #566573;
 }
 
 /* Footer */
@@ -111,6 +114,6 @@ a {
   padding: 30px;
   font-size: 0.9rem;
   color: #888;
-  background: #e0e0e0;
+  background: #dbe4ea;
   margin-top: 50px;
 }
