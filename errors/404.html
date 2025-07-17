@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 Not Found - Error Code Dictionary</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    body {
+      background: #dbe4ea; /* Blue-gray base */
+      color: #2c3e50;
+    }
+
+    .error-wrapper {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      background: #dbe4ea;
+      border-radius: 20px;
+      box-shadow: 10px 10px 20px #b8c2ca,
+                  -10px -10px 20px #f8ffff;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 10px;
+      color: #2980b9;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #bdc3c7;
+      padding-bottom: 5px;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #dbe4ea;
+      color: #2c3e50;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 6px 6px 12px #b8c2ca,
+                  -6px -6px 12px #f8ffff;
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      box-shadow: 4px 4px 8px #b0bcc4,
+                  -4px -4px 8px #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .similar-errors a {
+      display: block;
+      margin-bottom: 8px;
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    .similar-errors a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-wrapper">
+    <h1>404</h1>
+    <h2>What does "404 Not Found" mean?</h2>
+    <p>
+      The <strong>404 Not Found</strong> error is an HTTP status code that indicates the server couldn't find the requested resource. In simpler terms, the browser was able to communicate with the server, but the server could not find what was requested.
+    </p>
+
+    <h2>Why does this happen?</h2>
+    <p>Common reasons for a 404 error include:</p>
+    <ul>
+      <li>The URL was mistyped or the link is broken.</li>
+      <li>The resource (page, file, endpoint) was moved or deleted.</li>
+      <li>The server is not configured to route to that path.</li>
+      <li>A static site build was incomplete or improperly deployed.</li>
+    </ul>
+
+    <h2>How to fix it</h2>
+    <ul>
+      <li><strong>Check the URL:</strong> Make sure the address is spelled correctly.</li>
+      <li><strong>Refresh the page:</strong> Occasionally, the error is temporary.</li>
+      <li><strong>Use site navigation:</strong> Try finding the page from the homepage.</li>
+      <li><strong>For Developers:</strong>
+        <ul>
+          <li>Ensure routing is configured correctly (especially in SPAs like React/Angular).</li>
+          <li>Confirm the file exists at the given path on the server or in your deployment pipeline.</li>
+          <li>Check for case-sensitive URL mismatches on Linux servers.</li>
+          <li>Update or remove broken links from your website.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Similar or related errors</h2>
+    <div class="similar-errors">
+      <a href="400.html">400 - Bad Request</a>
+      <a href="403.html">403 - Forbidden</a>
+      <a href="408.html">408 - Request Timeout</a>
+      <a href="410.html">410 - Gone</a>
+    </div>
+
+    <a class="back-link" href="../index.html">← Back to Homepage</a>
+  </div>
+
+</body>
+</html>
