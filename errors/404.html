@@ -2,119 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 Not Found - Error Code Dictionary</title>
+  <title>Error 404 - Page Not Found</title>
   <link rel="stylesheet" href="styles.css" />
- 
 </head>
 <body>
+  <div class="error-container">
+    <h1>Error 404</h1>
+    <p>The page you are looking for could not be found.</p>
 
-  <div class="error-wrapper">
-    <h1>404</h1>
-    <h2>What does "404 Not Found" mean?</h2>
-    <p>
-      The <strong>404 Not Found</strong> error is an HTTP status code that indicates the server couldn't find the requested resource. In simpler terms, the browser was able to communicate with the server, but the server could not find what was requested.
-    </p>
+    <h2>What’s Wrong?</h2>
+    <p>The URL might be incorrect, the page may have been removed, or it's unavailable.</p>
 
-    <h2>Why does this happen?</h2>
-    <p>Common reasons for a 404 error include:</p>
+    <h2>Fixes</h2>
     <ul>
-      <li>The URL was mistyped or the link is broken.</li>
-      <li>The resource (page, file, endpoint) was moved or deleted.</li>
-      <li>The server is not configured to route to that path.</li>
-      <li>A static site build was incomplete or improperly deployed.</li>
+      <li>Check for typos in the URL</li>
+      <li>Return to the <a href="../index.html">homepage</a></li>
+      <li>Use the search bar on the homepage</li>
     </ul>
 
-    <h2>How to fix it</h2>
-    <ul>
-      <li><strong>Check the URL:</strong> Make sure the address is spelled correctly.</li>
-      <li><strong>Refresh the page:</strong> Occasionally, the error is temporary.</li>
-      <li><strong>Use site navigation:</strong> Try finding the page from the homepage.</li>
-      <li><strong>For Developers:</strong>
-        <ul>
-          <li>Ensure routing is configured correctly (especially in SPAs like React/Angular).</li>
-          <li>Confirm the file exists at the given path on the server or in your deployment pipeline.</li>
-          <li>Check for case-sensitive URL mismatches on Linux servers.</li>
-          <li>Update or remove broken links from your website.</li>
-        </ul>
-      </li>
-    </ul>
+    <h2>Similar Errors</h2>
+    <div class="similar-errors">
+      <div class="similar-box"><strong>403</strong><br />Forbidden – No access</div>
+      <div class="similar-box"><strong>410</strong><br />Gone – Resource permanently removed</div>
+    </div>
 
-<h2>Similar or Related Errors</h2>
-<div class="similar-grid">
-  <a href="400.html" class="similar-card">
-    <h3>400 - Bad Request</h3>
-    <p>The server couldn't understand the request due to invalid syntax.</p>
-  </a>
+    <a class="dev-link" href="../dev/errors/404.html">Are you a developer?</a>
 
-  <a href="403.html" class="similar-card">
-    <h3>403 - Forbidden</h3>
-    <p>The client doesn't have permission to access this content.</p>
-  </a>
-
-  <a href="408.html" class="similar-card">
-    <h3>408 - Request Timeout</h3>
-    <p>The server timed out waiting for the client's request.</p>
-  </a>
-
-  <a href="410.html" class="similar-card">
-    <h3>410 - Gone</h3>
-    <p>The resource was intentionally removed and is no longer available.</p>
-  </a>
-</div>
-    <div class="dev-mode-btn-wrapper">
-  <a href="../dev/errors/404.html" class="dev-mode-btn" aria-label="Developer detailed 404 page">
-    If you're a developer, view detailed debug info →
-  </a>
-</div>
-
-   <a class="back-link" href="../index.html">← Back to Homepage</a>
+    <div class="feedback-wrapper">
+      <h3>We’d love your feedback</h3>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdFH2423qKxKSKSgG5mo8Kw1SImCcRqd64BNI0p_K-ZAy_c5g/viewform?embedded=true"
+        width="100%" height="963" frameborder="0" marginheight="0" marginwidth="0"
+        style="border: none; border-radius: 20px; box-shadow: 8px 8px 16px #b8c2ca, -8px -8px 16px #f8ffff; background: #dbe4ea;">
+        Loading…
+      </iframe>
+    </div>
   </div>
-  <div class="feedback-wrapper">
-  <h3>We’d love your feedback</h3>
-  <form id="feedback-form">
-    <label>1. Did you have this error?</label><br />
-    <input type="radio" name="hadError" value="yes" required> Yes
-    <input type="radio" name="hadError" value="no"> No<br /><br />
-
-    <label>2. Did this page help?</label><br />
-    <input type="radio" name="wasHelpful" value="yes" required> Yes
-    <input type="radio" name="wasHelpful" value="no"> No<br /><br />
-
-    <label for="improve">3. What can we do better?</label><br />
-    <textarea name="improve" id="improve" rows="3" placeholder="Your thoughts..."></textarea><br />
-
-    <button type="submit">Submit Feedback</button>
-    <p id="feedback-thanks" style="display:none; margin-top:10px;">Thanks for your feedback!</p>
-  </form>
-</div>
-
-<script>
-  document.getElementById('feedback-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const hadError = document.querySelector('input[name="hadError"]:checked')?.value;
-    const wasHelpful = document.querySelector('input[name="wasHelpful"]:checked')?.value;
-    const improve = document.getElementById('improve').value.trim();
-    const page = window.location.pathname.split('/').pop().replace('.html', '');
-
-    fetch('/save-feedback.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ page, hadError, wasHelpful, improve })
-    })
-    .then(res => {
-      if (res.ok) {
-        document.getElementById('feedback-thanks').style.display = 'block';
-        this.reset();
-      } else {
-        alert('Error saving feedback.');
-      }
-    })
-    .catch(err => alert('Could not send feedback.'));
-  });
-</script>
-
-
 </body>
 </html>
