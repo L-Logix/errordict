@@ -2,118 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 - Page Not Found (Dev Mode)</title>
+  <title>Dev: 404 - Page Not Found</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="error-container">
+    <h1>Developer Details: 404</h1>
+    <p><strong>Description:</strong> Client-side HTTP status code indicating that the requested page/resource was not found on the server.</p>
 
-  <div class="dev-banner">DEV MODE: Detailed Debug & Troubleshooting</div>
+    <h2>Causes</h2>
+    <ul>
+      <li>Broken link or incorrect path in frontend</li>
+      <li>Static file removed or renamed</li>
+      <li>Routing issue in SPA (React/Angular/etc.)</li>
+    </ul>
 
-  <div class="error-wrapper">
+    <h2>Fix Suggestions</h2>
+    <ul>
+      <li>Ensure all routes and URLs match file structure</li>
+      <li>Use SPA fallback routing (`404.html` → `index.html`) if needed</li>
+      <li>Use `<base href="/">` correctly</li>
+    </ul>
 
-    <h1>404</h1>
-    <h2>Page Not Found</h2>
-
-    <section>
-      <p class="section-intro">
-        The HTTP 404 Not Found response status code indicates that the server cannot find the requested resource. This means that the URL you tried to access does not correspond to any content available on the server. Unlike some other status codes, the 404 error is client-side, signifying that either the resource has been moved, deleted, or the URL is malformed.
-      </p>
-
-      <h3>What Went Wrong?</h3>
-      <p>
-        When your browser (or client) sends a request to the server, it expects a response containing the requested page or resource. If the server cannot find this resource, it responds with a 404 error. Common reasons include:
-      </p>
-      <ul>
-        <li>The URL is mistyped or malformed.</li>
-        <li>The resource was deleted or moved without proper redirects.</li>
-        <li>The server’s routing configuration does not match the requested path.</li>
-        <li>File permissions prevent access to the resource.</li>
-        <li>The requested resource exists but is hidden due to security rules.</li>
-      </ul>
-
-      <h3>Common Causes in Detail</h3>
-      <ol>
-        <li><strong>Typographical Errors:</strong> Simple typos in the URL path or filename.</li>
-        <li><strong>Incorrect Routing:</strong> Web applications or frameworks sometimes misconfigure routes leading to missing endpoints.</li>
-        <li><strong>File or Folder Renaming/Deletion:</strong> Files moved or renamed without updating links or redirects.</li>
-        <li><strong>Missing Index Files:</strong> If requesting a directory, the absence of an index file (e.g., index.html) may trigger 404.</li>
-        <li><strong>Broken Links:</strong> External or internal links pointing to outdated locations.</li>
-        <li><strong>Security Restrictions:</strong> Access denied by server config or .htaccess rules may simulate a 404 for hidden content.</li>
-      </ol>
-
-      <h2>Fixes & Troubleshooting</h2>
-      <p class="section-intro">Follow these steps to diagnose and fix 404 errors:</p>
-
-      <div class="fixes">
-        <ol>
-          <li><strong>Verify the URL:</strong> Double-check the spelling, capitalization, and path structure in the URL bar. Pay attention to trailing slashes and file extensions.</li>
-          <li><strong>Check Server File Structure:</strong> Using SSH or FTP, confirm the requested file exists at the expected location on the server.</li>
-          <li><strong>Review Routing Configuration:</strong> In frameworks (Express, Django, etc.), check route definitions and middleware that may affect the requested path.</li>
-          <li><strong>Inspect Web Server Logs:</strong> Access logs and error logs provide insights into what was requested and why it failed.</li>
-          <li><strong>Look for Redirects:</strong> Check if the URL should be redirected to another location using .htaccess, nginx configs, or app routing.</li>
-          <li><strong>Check File Permissions:</strong> Ensure the webserver user has read access to the requested file or folder.</li>
-          <li><strong>Clear Caches:</strong> Clear browser cache and server cache/CDN caches that might serve outdated 404 pages.</li>
-          <li><strong>Validate .htaccess or Rewrite Rules:</strong> Make sure that URL rewriting rules don't incorrectly block valid requests.</li>
-          <li><strong>Test with a Simple Static File:</strong> Place a known file (e.g., test.html) in the directory and try accessing it directly.</li>
-          <li><strong>Check Framework-Specific Settings:</strong> For CMSs or apps (WordPress, Drupal), ensure permalink settings are correct and rebuild rewrite rules if needed.</li>
-        </ol>
-      </div>
-
-      <h2>Related & Similar Errors</h2>
-      <div class="similar-grid">
-        <a href="../400.html" class="similar-card">
-          <h3>400 - Bad Request</h3>
-          <p>The request was malformed or invalid.</p>
-        </a>
-        <a href="../403.html" class="similar-card">
-          <h3>403 - Forbidden</h3>
-          <p>Access denied due to permission issues.</p>
-        </a>
-        <a href="../500.html" class="similar-card">
-          <h3>500 - Internal Server Error</h3>
-          <p>Unexpected server error.</p>
-        </a>
-        <a href="../502.html" class="similar-card">
-          <h3>502 - Bad Gateway</h3>
-          <p>Invalid response from upstream server.</p>
-        </a>
-      </div>
-
-      <a href="../../index.html" class="back-link">← Back to Homepage</a>
-
-      <h2>Dev Debug Information</h2>
-      <div class="dev-info" aria-label="Debug Information">
-<pre>
-Request URL: /dev/errors/404.html
-Timestamp: 2025-07-17 15:10:22
-HTTP Method: GET
-Client IP: 192.168.1.100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-Server Response Code: 404 Not Found
-Server Software: Apache/2.4.41 (Ubuntu)
-Document Root: /var/www/html/dev/errors/
-Requested Path: /dev/errors/404.html
-
-Logs Summary:
-[error] [client 192.168.1.100] File does not exist: /var/www/html/dev/errors/404.html
-
-Possible Causes:
-- File not uploaded or removed accidentally.
-- Misconfigured routing or URL rewriting.
-- Permissions prevent access.
-
-Recommended Next Steps:
-- Verify file presence.
-- Check server config.
-- Consult detailed server logs.
-
-</pre>
-      </div>
-
-    </section>
-
+    <div class="feedback-wrapper">
+      <h3>We’d love your feedback</h3>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdFH2423qKxKSKSgG5mo8Kw1SImCcRqd64BNI0p_K-ZAy_c5g/viewform?embedded=true"
+        width="100%" height="963" frameborder="0" marginheight="0" marginwidth="0"
+        style="border: none; border-radius: 20px; box-shadow: 8px 8px 16px #b8c2ca, -8px -8px 16px #f8ffff; background: #dbe4ea;">
+        Loading…
+      </iframe>
+    </div>
   </div>
-
 </body>
 </html>
