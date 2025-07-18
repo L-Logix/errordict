@@ -92,6 +92,74 @@
 
     sectionTitle.textContent = value ? "Top Results" : "Popular Errors";
   });
+  <script>
+  const searchInput = document.getElementById('search');
+  const errorList = document.getElementById('error-list');
+  const sectionTitle = document.getElementById('error-section-title');
+
+  let allErrors = [];
+  let popularErrors = [];
+
+  // Load error lists from txt files
+  async function loadErrors() {
+    const [allRes, popularRes] = await Promise.all([
+      fetch('errors/list.txt'),
+      fetch('errors/popular.txt'),
+    ]);
+
+    const allText = await allRes.text();
+    const popularText = await popularRes.text();
+
+    allErrors = allText.trim().split('\n').map(e => e.trim());
+    popularErrors = popularText.trim().split('\n').map(e => e.trim());
+
+    renderCards(popularErrors); // Show popular errors on load
+  }
+
+  function renderCards(codeList) {
+    errorList.innerHTML = ''; // Clear previous cards
+    if (codeList.length === 0) {
+      errorList.innerHTML = '<p>No results found.</p>';
+      return;
+    }
+
+    codeList.forEach(code => {
+      const card = document.createElement('a');
+      card.href = `errors/${code}.html`;
+      card.className = 'error-card';
+      card.innerHTML = `
+        <h3>Error ${code}</h3>
+        <p>${getDescription(code)}</p>
+      `;
+      errorList.appendChild(card);
+    });
+  }
+
+  function getDescription(code) {
+    switch(code) {
+      case '404':
+        return 'Page Not Found';
+      case '1':
+        return 'General or unspecified application error';
+      default:
+        return 'Unknown error code';
+    }
+  }
+
+  // Handle search
+  searchInput.addEventListener('input', function () {
+    const value = this.value.toLowerCase().trim();
+    const matched = allErrors.filter(code =>
+      code.includes(value) || getDescription(code).toLowerCase().includes(value)
+    );
+
+    sectionTitle.textContent = value ? 'Top Results' : 'Popular Errors';
+    renderCards(matched);
+  });
+
+  loadErrors();
+</script>
+
 </script>
 
 
