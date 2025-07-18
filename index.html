@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Error Code Dictionary</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <header class="header">
     <h1>Error Code Dictionary</h1>
-    <p>Your go-to guide for decoding system, HTTP, and network error messages</p>
+    <p>Understand, fix, and explore system and network errors</p>
   </header>
 
   <main class="main-content">
+
     <section class="search-section">
-      <input type="text" placeholder="Search for an error code (e.g., 403, ECONNREFUSED, EADDRINUSE)" />
+      <input type="text" id="searchInput" placeholder="Search for an error code (e.g., 403, ECONNREFUSED)" />
     </section>
 
     <section class="featured-section">
       <h2>Popular Error Codes</h2>
-      <div class="error-grid">
+      <div class="error-grid" id="errorGrid">
 
         <a href="errors/404.html" class="error-card">
           <h3>404 - Not Found</h3>
@@ -33,12 +35,12 @@
 
         <a href="errors/403.html" class="error-card">
           <h3>403 - Forbidden</h3>
-          <p>The client does not have access rights to the content.</p>
+          <p>The client doesn't have permission to access the resource.</p>
         </a>
 
         <a href="errors/400.html" class="error-card">
           <h3>400 - Bad Request</h3>
-          <p>The server could not understand the request due to invalid syntax.</p>
+          <p>The server could not understand the request due to malformed syntax.</p>
         </a>
 
         <a href="errors/502.html" class="error-card">
@@ -48,12 +50,12 @@
 
         <a href="errors/econnrefused.html" class="error-card">
           <h3>ECONNREFUSED</h3>
-          <p>Connection was refused — typically means the server is not accepting connections.</p>
+          <p>The server refused the connection — it might be offline or blocked.</p>
         </a>
 
         <a href="errors/eaddrinuse.html" class="error-card">
           <h3>EADDRINUSE</h3>
-          <p>Address already in use — the specified port is already occupied.</p>
+          <p>The port you're trying to bind is already in use.</p>
         </a>
 
         <a href="errors/408.html" class="error-card">
@@ -63,10 +65,30 @@
 
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
     <p>&copy; 2025 Error Code Dictionary. All rights reserved.</p>
   </footer>
+
+  <!-- 🔍 Search Script -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const errorCards = document.querySelectorAll('.error-card');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+
+      errorCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        const matches = title.includes(query) || description.includes(query);
+        card.style.display = matches ? 'block' : 'none';
+      });
+    });
+  </script>
+
 </body>
 </html>
