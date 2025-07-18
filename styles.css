@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #dbe4ea; /* Soft blue-gray */
+  background: #dbe4ea; /* Blue-gray */
   color: #2c3e50;
   line-height: 1.6;
 }
@@ -38,7 +38,7 @@ a {
   color: #566573;
 }
 
-/* Main content wrapper */
+/* Main content */
 .main-content {
   padding: 40px 20px;
   max-width: 1000px;
@@ -68,7 +68,7 @@ a {
   color: #2c3e50;
 }
 
-/* Featured Error Cards */
+/* Featured Section */
 .featured-section h2 {
   text-align: center;
   font-size: 2rem;
