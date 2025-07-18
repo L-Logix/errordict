@@ -73,22 +73,26 @@
   </footer>
 
   <!-- 🔍 Search Script -->
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const errorCards = document.querySelectorAll('.error-card');
+<script>
+  const searchInput = document.getElementById('search');
+  const errorCards = document.querySelectorAll('.error-card');
+  const sectionTitle = document.getElementById('error-section-title');
 
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase().trim();
+  searchInput.addEventListener('input', function () {
+    const value = this.value.toLowerCase().trim();
+    let found = false;
 
-      errorCards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-
-        const matches = title.includes(query) || description.includes(query);
-        card.style.display = matches ? 'block' : 'none';
-      });
+    errorCards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const match = text.includes(value);
+      card.style.display = match ? 'block' : 'none';
+      if (match) found = true;
     });
-  </script>
+
+    sectionTitle.textContent = value ? "Top Results" : "Popular Errors";
+  });
+</script>
+
 
 </body>
 </html>
