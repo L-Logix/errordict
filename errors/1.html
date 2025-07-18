@@ -2,91 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Error 1 - General Error</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <div class="error-wrapper">
-
+  <div class="error-container">
     <h1>Error 1</h1>
-    <h2>General or Unspecified Error</h2>
+    <p>This is a general error often used as a fallback.</p>
 
-    <p>
-      Something went wrong, but the system did not return a specific explanation.
-      This is typically used as a fallback when the cause of failure is unknown or not yet classified.
-    </p>
+    <h2>What’s Wrong?</h2>
+    <p>The system encountered an unspecified issue. It could be related to input, resources, or internal logic.</p>
 
-    <h3>Possible Causes</h3>
+    <h2>Fixes</h2>
     <ul>
-      <li>Uncaught exceptions in application logic.</li>
-      <li>Script terminated unexpectedly with exit code 1.</li>
-      <li>Generic command failure without context.</li>
-      <li>Server, shell, or CLI application returned a fallback error status.</li>
+      <li>Check logs for more specific error details</li>
+      <li>Restart the app or service</li>
+      <li>Ensure inputs/configs are correct</li>
     </ul>
 
-    <h3>What You Can Do</h3>
-    <ul>
-      <li>Try reloading or repeating the action.</li>
-      <li>Check for missing required inputs or arguments.</li>
-      <li>Contact support if the issue persists.</li>
-    </ul>
-
-    <div class="dev-mode-btn-wrapper">
-      <a href="../dev/errors/1.html" class="dev-mode-btn">
-        If you're a developer, view detailed debug info →
-      </a>
+    <h2>Similar Errors</h2>
+    <div class="similar-errors">
+      <div class="similar-box"><strong>500</strong><br />Internal Server Error</div>
+      <div class="similar-box"><strong>2</strong><br />File Not Found</div>
     </div>
 
-    <a href="../index.html" class="back-link">← Back to Homepage</a>
+    <a class="dev-link" href="../dev/errors/1.html">Are you a developer?</a>
 
+    <div class="feedback-wrapper">
+      <h3>We’d love your feedback</h3>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdFH2423qKxKSKSgG5mo8Kw1SImCcRqd64BNI0p_K-ZAy_c5g/viewform?embedded=true"
+        width="100%" height="963" frameborder="0" marginheight="0" marginwidth="0"
+        style="border: none; border-radius: 20px; box-shadow: 8px 8px 16px #b8c2ca, -8px -8px 16px #f8ffff; background: #dbe4ea;">
+        Loading…
+      </iframe>
+    </div>
   </div>
-  <div class="feedback-wrapper">
-  <h3>We’d love your feedback</h3>
-  <form id="feedback-form">
-    <label>1. Did you have this error?</label><br />
-    <input type="radio" name="hadError" value="yes" required> Yes
-    <input type="radio" name="hadError" value="no"> No<br /><br />
-
-    <label>2. Did this page help?</label><br />
-    <input type="radio" name="wasHelpful" value="yes" required> Yes
-    <input type="radio" name="wasHelpful" value="no"> No<br /><br />
-
-    <label for="improve">3. What can we do better?</label><br />
-    <textarea name="improve" id="improve" rows="3" placeholder="Your thoughts..."></textarea><br />
-
-    <button type="submit">Submit Feedback</button>
-    <p id="feedback-thanks" style="display:none; margin-top:10px;">Thanks for your feedback!</p>
-  </form>
-</div>
-
-<script>
-  document.getElementById('feedback-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const hadError = document.querySelector('input[name="hadError"]:checked')?.value;
-    const wasHelpful = document.querySelector('input[name="wasHelpful"]:checked')?.value;
-    const improve = document.getElementById('improve').value.trim();
-    const page = window.location.pathname.split('/').pop().replace('.html', '');
-
-    fetch('/save-feedback.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ page, hadError, wasHelpful, improve })
-    })
-    .then(res => {
-      if (res.ok) {
-        document.getElementById('feedback-thanks').style.display = 'block';
-        this.reset();
-      } else {
-        alert('Error saving feedback.');
-      }
-    })
-    .catch(err => alert('Could not send feedback.'));
-  });
-</script>
-
-
 </body>
 </html>
