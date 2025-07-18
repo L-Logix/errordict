@@ -1,7 +1,7 @@
 # 📚 Error Code Dictionary
 
-[![GitHub stars](https://img.shields.io/github/stars/L-Logix/error-code-dictionary?style=social)](https://github.com/L-Logix/error-code-dictionary/stargazers)  
-[![GitHub last commit](https://img.shields.io/github/last-commit/L-Logix/error-code-dictionary)](https://github.com/L-Logix/error-code-dictionary/commits/main)  
+[![GitHub stars](https://img.shields.io/github/stars/L-Logix/errordict?style=social)](https://github.com/L-Logix/errordict/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/L-Logix/errordict)](https://github.com/L-Logix/errordict/commits/main) 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
