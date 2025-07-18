@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Error Code 1 - Dev Mode</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="dev-banner">DEV MODE: Unspecified / General Error (Code 1)</div>
+
+  <div class="error-wrapper">
+
+    <h1>Error 1</h1>
+    <h2>Unspecified or General Error</h2>
+
+    <p class="section-intro">
+      Exit code 1 typically indicates a catch-all error when no specific exit code applies. It's used in shell scripting, batch files, Python, Node.js, and other systems when a generic failure occurs.
+    </p>
+
+    <h3>Root Causes</h3>
+    <ol>
+      <li><strong>Unhandled Exceptions:</strong> Application crashed or terminated without a specific error code.</li>
+      <li><strong>Syntax Errors or Misconfigurations:</strong> The system encountered malformed input or config files.</li>
+      <li><strong>Dependency Failures:</strong> An underlying process failed and didn’t pass its reason upward.</li>
+      <li><strong>Permissions or Path Issues:</strong> File not found, permission denied, or executable not found.</li>
+      <li><strong>Return Code Propagation:</strong> A command or script returned code 1, and it wasn't handled.</li>
+    </ol>
+
+    <h3>Fixes</h3>
+    <ul>
+      <li>Enable verbose or debug logging in your application.</li>
+      <li>Wrap scripts with try/catch or exit trap logic to capture and log context.</li>
+      <li>Use shell tools like `set -e`, `set -x` to trace failure points.</li>
+      <li>Validate all arguments, files, and environment variables.</li>
+      <li>Check for upstream processes returning non-zero codes and log them explicitly.</li>
+    </ul>
+
+    <h3>Similar Errors</h3>
+    <div class="similar-grid">
+      <a href="2.html" class="similar-card">
+        <h3>Error 2</h3>
+        <p>Misuse of shell built-ins or improper command usage.</p>
+      </a>
+      <a href="126.html" class="similar-card">
+        <h3>Error 126</h3>
+        <p>Command invoked cannot execute.</p>
+      </a>
+      <a href="127.html" class="similar-card">
+        <h3>Error 127</h3>
+        <p>Command not found.</p>
+      </a>
+    </div>
+
+    <a href="../../index.html" class="back-link">← Back to Homepage</a>
+
+    <h2>Dev Debug Information</h2>
+    <div class="dev-info">
+<pre>
+Error Code: 1
+Timestamp: 2025-07-18 11:45:39
+Application: node-cli-runner
+Command Executed: ./deploy.sh --env=staging
+Exit Status: 1
+
+Logs:
+- deploy.sh: line 42: syntax error near unexpected token `fi'
+- Exited due to missing environment variable $API_KEY
+- Permissions on /deploy/hooks/post-deploy.sh were denied
+
+Suggestions:
+- Check shell script syntax (`bash -n deploy.sh`)
+- Run with `set -x` for step trace
+- Ensure required variables are defined before execution
+- Use explicit exit codes in your scripts
+
+</pre>
+    </div>
+
+  </div>
+
+</body>
+</html>
