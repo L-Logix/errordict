@@ -43,14 +43,6 @@ Embedded Google Forms collect user feedback on each error page:
 
 ---
 
-## Contributors
-
-<a href="https://github.com/L-Logix/error-code-dictionary/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=L-Logix/error-code-dictionary" alt="Contributors" />
-</a>
-
----
-
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=L-Logix/error-code-dictionary&type=Timeline)](https://www.star-history.com/#L-Logix/error-code-dictionary&Timeline)
