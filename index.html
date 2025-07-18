@@ -2,166 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Error Code Dictionary</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="errors/styles.css" />
+  <style>
+    /* Basic blue-gray neumorphic style for homepage */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #dbe4ea;
+      color: #2c3e50;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      color: #2980b9;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #446288;
+      margin-bottom: 30px;
+    }
+
+    #search {
+      width: 80%;
+      max-width: 500px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      background: #dbe4ea;
+      box-shadow: inset 8px 8px 16px #b8c2ca,
+                  inset -8px -8px 16px #f8ffff;
+      outline: none;
+      margin-bottom: 30px;
+      transition: all 0.2s ease;
+    }
+
+    #search:focus {
+      box-shadow: inset 4px 4px 10px #a5b1b9,
+                  inset -4px -4px 10px #f1faff;
+    }
+
+    h2#error-section-title {
+      font-size: 2rem;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .error-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    .error-card {
+      text-align: left;
+      background: #dbe4ea;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 6px 6px 12px #b8c2ca,
+                  -6px -6px 12px #f8ffff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: #2c3e50;
+    }
+
+    .error-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 4px 4px 10px #a1b1c0,
+                  -4px -4px 10px #f0faff;
+    }
+
+    .error-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+      color: #1c3d70;
+    }
+
+    .error-card p {
+      font-size: 0.95rem;
+      color: #4a5e76;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      #search {
+        width: 95%;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <header class="header">
+  <div class="container">
     <h1>Error Code Dictionary</h1>
-    <p>Understand, fix, and explore system and network errors</p>
-  </header>
+    <p class="subtitle">Search for system and application error codes</p>
 
-  <main class="main-content">
+    <input type="text" id="search" placeholder="Search error codes..." autocomplete="off" />
 
-    <section class="search-section">
-      <input type="text" id="searchInput" placeholder="Search for an error code (e.g., 403, ECONNREFUSED)" />
-    </section>
+    <h2 id="error-section-title">Popular Errors</h2>
+    <div id="error-list" class="error-grid">
+      <!-- Cards will be injected here -->
+    </div>
+  </div>
 
-    <section class="featured-section">
-<h2 id="error-section-title">Popular Errors</h2>
-<div id="error-list" class="error-grid"></div>
-
-
-        <a href="errors/404.html" class="error-card">
-          <h3>404 - Not Found</h3>
-          <p>The server can't find the requested resource.</p>
-        </a>
-
-        <a href="errors/500.html" class="error-card">
-          <h3>500 - Internal Server Error</h3>
-          <p>The server encountered an unexpected condition.</p>
-        </a>
-
-        <a href="errors/403.html" class="error-card">
-          <h3>403 - Forbidden</h3>
-          <p>The client doesn't have permission to access the resource.</p>
-        </a>
-
-        <a href="errors/400.html" class="error-card">
-          <h3>400 - Bad Request</h3>
-          <p>The server could not understand the request due to malformed syntax.</p>
-        </a>
-
-        <a href="errors/502.html" class="error-card">
-          <h3>502 - Bad Gateway</h3>
-          <p>The server received an invalid response from the upstream server.</p>
-        </a>
-
-        <a href="errors/econnrefused.html" class="error-card">
-          <h3>ECONNREFUSED</h3>
-          <p>The server refused the connection — it might be offline or blocked.</p>
-        </a>
-
-        <a href="errors/eaddrinuse.html" class="error-card">
-          <h3>EADDRINUSE</h3>
-          <p>The port you're trying to bind is already in use.</p>
-        </a>
-
-        <a href="errors/408.html" class="error-card">
-          <h3>408 - Request Timeout</h3>
-          <p>The server timed out waiting for the request.</p>
-        </a>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>&copy; 2025 Error Code Dictionary. All rights reserved.</p>
-  </footer>
-
-  <!-- 🔍 Search Script -->
-<script>
-  const searchInput = document.getElementById('search');
-  const errorCards = document.querySelectorAll('.error-card');
-  const sectionTitle = document.getElementById('error-section-title');
-
-  searchInput.addEventListener('input', function () {
-    const value = this.value.toLowerCase().trim();
-    let found = false;
-
-    errorCards.forEach(card => {
-      const text = card.textContent.toLowerCase();
-      const match = text.includes(value);
-      card.style.display = match ? 'block' : 'none';
-      if (match) found = true;
-    });
-
-    sectionTitle.textContent = value ? "Top Results" : "Popular Errors";
-  });
   <script>
-  const searchInput = document.getElementById('search');
-  const errorList = document.getElementById('error-list');
-  const sectionTitle = document.getElementById('error-section-title');
+    const searchInput = document.getElementById('search');
+    const errorList = document.getElementById('error-list');
+    const sectionTitle = document.getElementById('error-section-title');
 
-  let allErrors = [];
-  let popularErrors = [];
+    let allErrors = [];
+    let popularErrors = [];
 
-  // Load error lists from txt files
-  async function loadErrors() {
-    const [allRes, popularRes] = await Promise.all([
-      fetch('errors/list.txt'),
-      fetch('errors/popular.txt'),
-    ]);
+    async function loadErrors() {
+      const [allRes, popRes] = await Promise.all([
+        fetch('errors/list.txt'),
+        fetch('errors/popular.txt'),
+      ]);
 
-    const allText = await allRes.text();
-    const popularText = await popularRes.text();
+      const allText = await allRes.text();
+      const popText = await popRes.text();
 
-    allErrors = allText.trim().split('\n').map(e => e.trim());
-    popularErrors = popularText.trim().split('\n').map(e => e.trim());
+      allErrors = allText.trim().split('\n').map(e => e.trim());
+      popularErrors = popText.trim().split('\n').map(e => e.trim());
 
-    renderCards(popularErrors); // Show popular errors on load
-  }
-
-  function renderCards(codeList) {
-    errorList.innerHTML = ''; // Clear previous cards
-    if (codeList.length === 0) {
-      errorList.innerHTML = '<p>No results found.</p>';
-      return;
+      renderCards(popularErrors);
     }
 
-    codeList.forEach(code => {
-      const card = document.createElement('a');
-      card.href = `errors/${code}.html`;
-      card.className = 'error-card';
-      card.innerHTML = `
-        <h3>Error ${code}</h3>
-        <p>${getDescription(code)}</p>
-      `;
-      errorList.appendChild(card);
+    function renderCards(codeList) {
+      errorList.innerHTML = '';
+      if (codeList.length === 0) {
+        errorList.innerHTML = '<p>No results found.</p>';
+        return;
+      }
+
+      codeList.forEach(code => {
+        const card = document.createElement('a');
+        card.href = `errors/${code}.html`;
+        card.className = 'error-card';
+        card.innerHTML = `
+          <h3>Error ${code}</h3>
+          <p>${getDescription(code)}</p>
+        `;
+        errorList.appendChild(card);
+      });
+    }
+
+    function getDescription(code) {
+      switch (code) {
+        case '404':
+          return 'Page Not Found';
+        case '1':
+          return 'General or unspecified application error';
+        default:
+          return 'Unknown error';
+      }
+    }
+
+    searchInput.addEventListener('input', function () {
+      const value = this.value.toLowerCase().trim();
+      const matched = allErrors.filter(code =>
+        code.includes(value) || getDescription(code).toLowerCase().includes(value)
+      );
+
+      sectionTitle.textContent = value ? 'Top Results' : 'Popular Errors';
+      renderCards(matched);
     });
-  }
 
-  function getDescription(code) {
-    switch(code) {
-      case '404':
-        return 'Page Not Found';
-      case '1':
-        return 'General or unspecified application error';
-      default:
-        return 'Unknown error code';
-    }
-  }
-
-  // Handle search
-  searchInput.addEventListener('input', function () {
-    const value = this.value.toLowerCase().trim();
-    const matched = allErrors.filter(code =>
-      code.includes(value) || getDescription(code).toLowerCase().includes(value)
-    );
-
-    sectionTitle.textContent = value ? 'Top Results' : 'Popular Errors';
-    renderCards(matched);
-  });
-
-  loadErrors();
-</script>
-
-</script>
-
-
+    loadErrors();
+  </script>
 </body>
 </html>
