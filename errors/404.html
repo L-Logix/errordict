@@ -70,6 +70,51 @@
 
    <a class="back-link" href="../index.html">← Back to Homepage</a>
   </div>
+  <div class="feedback-wrapper">
+  <h3>We’d love your feedback</h3>
+  <form id="feedback-form">
+    <label>1. Did you have this error?</label><br />
+    <input type="radio" name="hadError" value="yes" required> Yes
+    <input type="radio" name="hadError" value="no"> No<br /><br />
+
+    <label>2. Did this page help?</label><br />
+    <input type="radio" name="wasHelpful" value="yes" required> Yes
+    <input type="radio" name="wasHelpful" value="no"> No<br /><br />
+
+    <label for="improve">3. What can we do better?</label><br />
+    <textarea name="improve" id="improve" rows="3" placeholder="Your thoughts..."></textarea><br />
+
+    <button type="submit">Submit Feedback</button>
+    <p id="feedback-thanks" style="display:none; margin-top:10px;">Thanks for your feedback!</p>
+  </form>
+</div>
+
+<script>
+  document.getElementById('feedback-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const hadError = document.querySelector('input[name="hadError"]:checked')?.value;
+    const wasHelpful = document.querySelector('input[name="wasHelpful"]:checked')?.value;
+    const improve = document.getElementById('improve').value.trim();
+    const page = window.location.pathname.split('/').pop().replace('.html', '');
+
+    fetch('/save-feedback.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page, hadError, wasHelpful, improve })
+    })
+    .then(res => {
+      if (res.ok) {
+        document.getElementById('feedback-thanks').style.display = 'block';
+        this.reset();
+      } else {
+        alert('Error saving feedback.');
+      }
+    })
+    .catch(err => alert('Could not send feedback.'));
+  });
+</script>
+
 
 </body>
 </html>
