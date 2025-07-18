@@ -1,0 +1,173 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #dbe4ea; /* Blue-gray base */
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 40px 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Dev Banner */
+.dev-banner {
+  background: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 3px 10px rgba(74,144,226,.6);
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+/* Headings */
+h1 {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #2980b9;
+  text-align: center;
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+h2 {
+  font-size: 2.4rem;
+  color: #1c3d70;
+  text-align: center;
+  margin-bottom: 25px;
+  user-select: none;
+}
+
+h3 {
+  font-size: 1.6rem;
+  color: #2a3f6e;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Section intro paragraph */
+.section-intro {
+  font-size: 1.1rem;
+  color: #2a3f6e;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Paragraphs and lists */
+p, li {
+  font-size: 1rem;
+  color: #3b4a60;
+  margin-bottom: 14px;
+}
+
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+ol li {
+  margin-bottom: 15px;
+}
+
+/* Fixes list styling */
+.fixes ol {
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+/* Similar errors grid */
+.similar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.similar-card {
+  background: #dbe4ea;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 16px #b8c2ca,
+              -8px -8px 16px #f8ffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #1c3d70;
+  text-decoration: none;
+}
+
+.similar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 12px #9bbce3,
+              -4px -4px 12px #e3f0ff;
+}
+
+.similar-card h3 {
+  margin-bottom: 8px;
+}
+
+.similar-card p {
+  font-size: 0.9rem;
+  color: #446288;
+}
+
+/* Back to homepage link */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #1c3d70;
+}
+
+/* Dev debug info box */
+.dev-info {
+  margin-top: 40px;
+  padding: 20px;
+  background: #c9daf8;
+  border-radius: 15px;
+  box-shadow: inset 4px 4px 8px #9bbce3,
+              inset -4px -4px 8px #e3f0ff;
+  font-family: 'Consolas', monospace, monospace;
+  color: #17387a;
+  white-space: pre-wrap;
+  max-height: 280px;
+  overflow-y: auto;
+  line-height: 1.3;
+  font-size: 0.95rem;
+  user-select: text;
+}
+
+/* Container wrapper */
+.error-wrapper {
+  background: #dbe4ea;
+  border-radius: 30px;
+  padding: 40px 50px;
+  box-shadow: 12px 12px 24px #b8c2ca,
+              -12px -12px 24px #f8ffff;
+}
+
+/* Links inside lists */
+a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1c3d70;
+}
