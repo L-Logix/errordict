@@ -6,33 +6,28 @@
   <title>Error Code Dictionary</title>
   <link rel="stylesheet" href="errors/styles.css" />
   <style>
-    /* Basic blue-gray neumorphic style for homepage */
+    /* Homepage-specific overrides */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #dbe4ea;
-      color: #2c3e50;
       margin: 0;
-      padding: 40px 20px;
+      padding: 40px;
+      background: #dbe4ea;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2c3e50;
     }
-
     .container {
       max-width: 960px;
       margin: auto;
       text-align: center;
     }
-
     h1 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
       color: #2980b9;
+      margin-bottom: 10px;
     }
-
     p.subtitle {
-      font-size: 1.2rem;
       color: #446288;
       margin-bottom: 30px;
     }
-
     #search {
       width: 80%;
       max-width: 500px;
@@ -41,67 +36,46 @@
       border: none;
       border-radius: 50px;
       background: #dbe4ea;
-      box-shadow: inset 8px 8px 16px #b8c2ca,
-                  inset -8px -8px 16px #f8ffff;
-      outline: none;
+      box-shadow: inset 8px 8px 16px #b8c2ca, inset -8px -8px 16px #f8ffff;
       margin-bottom: 30px;
       transition: all 0.2s ease;
     }
-
     #search:focus {
-      box-shadow: inset 4px 4px 10px #a5b1b9,
-                  inset -4px -4px 10px #f1faff;
+      box-shadow: inset 4px 4px 10px #a5b1b9, inset -4px -4px 10px #f1faff;
+      outline: none;
     }
-
-    h2#error-section-title {
+    #error-section-title {
       font-size: 2rem;
-      margin-top: 30px;
       margin-bottom: 20px;
     }
-
     .error-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 0 10px;
     }
-
     .error-card {
       text-align: left;
       background: #dbe4ea;
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 6px 6px 12px #b8c2ca,
-                  -6px -6px 12px #f8ffff;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 6px 6px 12px #b8c2ca, -6px -6px 12px #f8ffff;
+      transition: all 0.2s ease;
       text-decoration: none;
       color: #2c3e50;
     }
-
     .error-card:hover {
       transform: translateY(-4px);
-      box-shadow: 4px 4px 10px #a1b1c0,
-                  -4px -4px 10px #f0faff;
+      box-shadow: 4px 4px 10px #a1b1c0, -4px -4px 10px #f0faff;
     }
-
     .error-card h3 {
       margin-bottom: 8px;
       font-size: 1.3rem;
       color: #1c3d70;
     }
-
     .error-card p {
       font-size: 0.95rem;
       color: #4a5e76;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-      #search {
-        width: 95%;
-      }
     }
   </style>
 </head>
@@ -113,9 +87,7 @@
     <input type="text" id="search" placeholder="Search error codes..." autocomplete="off" />
 
     <h2 id="error-section-title">Popular Errors</h2>
-    <div id="error-list" class="error-grid">
-      <!-- Cards will be injected here -->
-    </div>
+    <div id="error-list" class="error-grid"></div>
   </div>
 
   <script>
@@ -128,57 +100,48 @@
 
     async function loadErrors() {
       const [allRes, popRes] = await Promise.all([
-        fetch('errors/list.txt'),
-        fetch('errors/popular.txt'),
+        fetch('supported_errors.txt'),
+        fetch('popular_errors.txt')
       ]);
-
-      const allText = await allRes.text();
-      const popText = await popRes.text();
-
-      allErrors = allText.trim().split('\n').map(e => e.trim());
-      popularErrors = popText.trim().split('\n').map(e => e.trim());
-
-      renderCards(popularErrors);
-    }
-
-    function renderCards(codeList) {
-      errorList.innerHTML = '';
-      if (codeList.length === 0) {
-        errorList.innerHTML = '<p>No results found.</p>';
-        return;
-      }
-
-      codeList.forEach(code => {
-        const card = document.createElement('a');
-        card.href = `errors/${code}.html`;
-        card.className = 'error-card';
-        card.innerHTML = `
-          <h3>Error ${code}</h3>
-          <p>${getDescription(code)}</p>
-        `;
-        errorList.appendChild(card);
+      allErrors = allRes.text().then(t => t.trim().split('\n'));
+      popularErrors = popRes.text().then(t => t.trim().split('\n'));
+      Promise.all([allErrors, popularErrors]).then(([all, pop]) => {
+        allErrors = all;
+        popularErrors = pop;
+        renderCards(popularErrors);
       });
     }
 
     function getDescription(code) {
       switch (code) {
-        case '404':
-          return 'Page Not Found';
-        case '1':
-          return 'General or unspecified application error';
-        default:
-          return 'Unknown error';
+        case '404': return 'Page Not Found';
+        case '1': return 'General or unspecified application error';
+        default: return 'Unknown error';
       }
     }
 
-    searchInput.addEventListener('input', function () {
-      const value = this.value.toLowerCase().trim();
-      const matched = allErrors.filter(code =>
-        code.includes(value) || getDescription(code).toLowerCase().includes(value)
-      );
+    function renderCards(codes) {
+      errorList.innerHTML = '';
+      if (codes.length === 0) {
+        errorList.innerHTML = '<p>No results found.</p>';
+        return;
+      }
+      for (const code of codes) {
+        const card = document.createElement('a');
+        card.href = `errors/${code}.html`;
+        card.className = 'error-card';
+        card.innerHTML = `<h3>Error ${code}</h3><p>${getDescription(code)}</p>`;
+        errorList.appendChild(card);
+      }
+    }
 
-      sectionTitle.textContent = value ? 'Top Results' : 'Popular Errors';
-      renderCards(matched);
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      const filter = allErrors
+        .filter(code => code.toLowerCase().includes(q) ||
+          getDescription(code).toLowerCase().includes(q));
+      sectionTitle.textContent = q ? 'Top Results' : 'Popular Errors';
+      renderCards(filter);
     });
 
     loadErrors();
